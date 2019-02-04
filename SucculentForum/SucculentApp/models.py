@@ -51,8 +51,10 @@ class Message(models.Model):
     Body = models.CharField(max_length = 10000)
     DateSent = models.DateField()
     DateRead = models.DateField(null = True)
-    SenderId = models.ForeignKey(User, null= True, on_delete=models.SET_NULL)#nullable and non cascade delete so that we can archive
+    SenderId = models.ForeignKey(User, null= True, on_delete=models.SET_NULL)#nullable and non cascade delete so that we can archive, send messages from system
 
+# this model is used to make messages that are sent to multiple accounts
+# a message has a MessageRecipientLink for every recipient of that message
 class MessageRecipientLink(models.Model):
     MesageId = models.ForeignKey(Message, on_delete=models.CASCADE)
     UserId = models.ForeignKey(User, on_delete=models.CASCADE)
