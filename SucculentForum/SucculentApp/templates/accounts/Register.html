@@ -1,0 +1,16 @@
+
+{% block content%}
+<body>
+    <p>
+        this is register page
+    </p>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        {% for field in form %}
+            <p>yo</p>
+        {% endfor %}
+        <button type="submit">Create</button>
+    </form>
+</body>
+{% endblock %}
