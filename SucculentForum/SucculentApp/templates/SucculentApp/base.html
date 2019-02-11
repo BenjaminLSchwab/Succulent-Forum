@@ -1,4 +1,13 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" href="">
+    <script type="text/javascript" src="{{ STATIC_URL }} /static/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }} /static/js/popper.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }} /static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{ STATIC_URL }} /static/css/bootstrap.min.css">
 </head>
+
+<body>
+    {% block content %}
+
+    {% endblock %} 
+</body>

@@ -1,6 +1,8 @@
 
-{% block content%}
-<body>
+
+ {% extends 'SucculentApp/base.html' %} 
+
+ {% block content %}
     <p>
         this is register page
     </p>
@@ -12,5 +14,6 @@
         {% endfor %}
         <button type="submit">Create</button>
     </form>
-</body>
-{% endblock %}
+ {% endblock content %}
+
+
