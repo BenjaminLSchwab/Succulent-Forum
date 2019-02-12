@@ -3,17 +3,15 @@
  {% extends 'SucculentApp/base.html' %} 
 
  {% block content %}
-    <p>
-        this is register page
-    </p>
+ <div class="data-entry-form p-2">
+    <h2>Register an Account</h2>
     <form method="POST">
         {% csrf_token %}
         {{form.as_p}}
-        {% for field in form %}
-            <p>yo</p>
-        {% endfor %}
-        <button type="submit">Create</button>
+
+        <button type="submit" class="btn btn-primary">Create</button>
     </form>
+</div>
  {% endblock content %}
 
 
