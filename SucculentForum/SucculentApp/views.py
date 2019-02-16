@@ -15,4 +15,4 @@ def register(request):
 
     else:
         form = SignUpForm()
-        return render(request, 'accounts/register.html', {'form':form})
+        return render(request, 'accounts/Register.html', {'form':form})
