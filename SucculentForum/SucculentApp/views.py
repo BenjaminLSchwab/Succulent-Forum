@@ -25,10 +25,11 @@ def newThread(request, topic_id):
         if form.is_valid():
             topic = Topic.objects.filter(pk=topic_id)[0]
             user = User.objects.filter(pk=request.user.id)[0]
-            NewThread = Thread(Title=form.data['title'],DateUpdated=form.data['DateUpdated'],
+            NewThread = Thread(Title=form.data['title'],DateUpdated=datetime.datetime.today().strftime('%Y-%m-%d'),
             Body=form.data['Body'],TopicId=topic,
-            UserId=user,DateStarted=form.data['DateStarted'],PostCount=form.data['PostCount'],
-            ViewCount=form.data['ViewCount'])
+            UserId=user,DateStarted=datetime.datetime.today().strftime('%Y-%m-%d'),
+            PostCount=0,
+            ViewCount=1)
             NewThread.save()
             return HttpResponseRedirect(request.path_info)
         else: 

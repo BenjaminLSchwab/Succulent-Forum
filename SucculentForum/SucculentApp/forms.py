@@ -12,13 +12,7 @@ class SignUpForm(UserCreationForm):
 
 class ThreadForm(forms.Form):
     title = forms.CharField(max_length=100)
-    DateUpdated = forms.DateField(widget = forms.HiddenInput(),required=False)
     Body = forms.CharField()
-    UserId = forms.ModelChoiceField(queryset=User.objects.all(),widget=forms.HiddenInput(),required=False)
-    ViewCount = forms.IntegerField(widget=forms.HiddenInput(),required=False)
-    TopicId = forms.ModelChoiceField(queryset=Topic.objects.all(),widget=forms.HiddenInput(),required=False)
-    DateStarted = forms.DateField(widget = forms.HiddenInput(),required=False)
-    PostCount = forms.IntegerField(widget=forms.HiddenInput(),required=False)
     
 
     
