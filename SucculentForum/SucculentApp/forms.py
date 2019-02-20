@@ -1,4 +1,7 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from SucculentApp.models import Topic
 
 from django.contrib.auth.models import User
 
@@ -9,3 +12,11 @@ class SignUpForm(forms.Form):
     Password2 = forms.CharField(widget=forms.PasswordInput())
     Signature = forms.CharField()
     Avatar = forms.ImageField()
+
+
+class ThreadForm(forms.Form):
+    title = forms.CharField(max_length=100)
+    Body = forms.CharField()
+    
+
+    
