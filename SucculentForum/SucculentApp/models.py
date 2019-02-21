@@ -8,7 +8,7 @@ class Profile(models.Model):
     #on_delete=models.CASCADE 
     #this means the profile will be deleted if the referenced user is deleted
     Signature = models.CharField(null=True, max_length=200)
-    Avatar = models.CharField(max_length=500)
+    Avatar = models.ImageField()
 
 class Topic(models.Model):
     Title = models.CharField(max_length=50)

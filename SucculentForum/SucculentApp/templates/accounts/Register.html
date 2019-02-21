@@ -5,7 +5,7 @@
  {% block content %}
  <div class="data-entry-form p-2">
     <h2>Register an Account</h2>
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{form.as_p}}
 

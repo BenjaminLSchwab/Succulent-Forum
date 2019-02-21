@@ -3,12 +3,16 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from SucculentApp.models import Topic
 
-class SignUpForm(UserCreationForm):
-    
+from django.contrib.auth.models import User
 
-    class Meta:
-        model = User
-        fields = ('username', 'password1', 'password2', )
+class SignUpForm(forms.Form):
+    UserName = forms.CharField()
+    Email = forms.EmailField()
+    Password1 = forms.CharField(widget=forms.PasswordInput())
+    Password2 = forms.CharField(widget=forms.PasswordInput())
+    Signature = forms.CharField()
+    Avatar = forms.ImageField()
+
 
 class ThreadForm(forms.Form):
     title = forms.CharField(max_length=100)
