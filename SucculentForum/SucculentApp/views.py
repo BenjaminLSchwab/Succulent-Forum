@@ -21,17 +21,17 @@ def register(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST, request.FILES) #form contains info from the register page
         if form.is_valid():
-            
-            #fill out a userCreationForm and use it to create a user
-            # userForm = UserCreationForm()
-            # userForm.username = form.UserName
-            # userForm.password1 = form.Password1
-            # userForm.password2 = form.Password2
-            # user = userForm.save()
+            if form.cleaned_data['Password1'] != form.cleaned_data['Password2']:
+                errorText = "Passwords do not match."
+                return render(request, 'accounts/Register.html', {'form':form, 'errorText':errorText})
 
-            #screw that, lets actually create a user the right way
+            try:
+                user = User.objects.create_user(form.cleaned_data['UserName'], form.cleaned_data['Email'], form.cleaned_data['Password1'])
 
-            user = User.objects.create_user(form.cleaned_data['UserName'], form.cleaned_data['Email'], form.cleaned_data['Password1'])
+            except:
+                errorText = "Username / Email is already in use."
+                return render(request, 'accounts/Register.html', {'form':form, 'errorText':errorText})
+
 
             profile = Profile()
             profile.User = user
@@ -39,7 +39,8 @@ def register(request):
             profile.Avatar = request.FILES['Avatar']
             profile.save()
 
-            return render(request, 'SucculentApp/index.html')
+            return redirect("/SucculentApp/")
+            
         else:
             form = SignUpForm()
             return render(request, 'accounts/Register.html', {'form':form})
