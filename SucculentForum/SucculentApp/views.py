@@ -81,3 +81,14 @@ def newThread(request, topic_id):
         }
 
     return render(request, 'SucculentApp/topicCreate.html', context)
+
+def newPost(request, thread_id):
+    if request.method == 'POST':
+       
+    else:
+       
+        context = {
+            'form': form
+        }
+
+    return render(request, 'SucculentApp/topicCreate.html', context)
