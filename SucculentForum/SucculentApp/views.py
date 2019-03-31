@@ -89,10 +89,10 @@ def newPost(request, thread_id):
 
             NewPost = Post()
             NewPost.Body = form.cleaned_data['Body']
-            NewPost.ThreadId = thread_id
+            NewPost.ThreadId = Thread.objects.filter(pk = thread_id)[0]
+            NewPost.save()
             
-            
-            return render(request, 'SucculentApp/postCreate.html')
+            return redirect("/SucculentApp/")
     else:
         form = PostForm()
         context = {
