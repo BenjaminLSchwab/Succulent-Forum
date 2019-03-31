@@ -82,16 +82,15 @@ def newThread(request, topic_id):
 
     return render(request, 'SucculentApp/topicCreate.html', context)
 
-def newPost(request):
+def newPost(request, thread_id):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
-            if form.cleaned_data['HasPoll']:
-                NewPoll = Poll()
-
 
             NewPost = Post()
             NewPost.Body = form.cleaned_data['Body']
+            NewPost.ThreadId = thread_id
+            
             
             return render(request, 'SucculentApp/postCreate.html')
     else:
