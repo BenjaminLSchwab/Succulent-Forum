@@ -19,8 +19,8 @@ class ThreadForm(forms.Form):
     Body = forms.CharField()
 
 class PostForm(forms.Form):
-    Body = forms.CharField(, max_length=10000, required=True)
-    HasPoll = forms.forms.BooleanField()
+    Body = forms.CharField(max_length=10000, required=True)
+    HasPoll = forms.BooleanField()
     
 
     

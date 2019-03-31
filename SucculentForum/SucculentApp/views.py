@@ -9,7 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 from SucculentApp.models import Profile
 from SucculentApp.models import Thread, Topic
 #from django.contrib.auth.forms import UserCreationForm
-from SucculentApp.forms import UserCreationForm, ThreadForm
+from SucculentApp.forms import UserCreationForm, ThreadForm, PostForm
 import datetime
 
 # Create your views here.
