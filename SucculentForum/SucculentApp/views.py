@@ -7,9 +7,9 @@ from django.contrib.auth.models import User
 from SucculentApp.forms import SignUpForm
 from django.contrib.auth.forms import UserCreationForm
 from SucculentApp.models import Profile
-from SucculentApp.models import Thread, Topic
+from SucculentApp.models import Thread, Topic, Post, Poll
 #from django.contrib.auth.forms import UserCreationForm
-from SucculentApp.forms import UserCreationForm, ThreadForm
+from SucculentApp.forms import UserCreationForm, ThreadForm, PostForm
 import datetime
 
 # Create your views here.
@@ -81,3 +81,22 @@ def newThread(request, topic_id):
         }
 
     return render(request, 'SucculentApp/topicCreate.html', context)
+
+def newPost(request, thread_id):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+
+            NewPost = Post()
+            NewPost.Body = form.cleaned_data['Body']
+            NewPost.ThreadId = Thread.objects.filter(pk = thread_id)[0]
+            NewPost.save()
+            
+            return redirect("/SucculentApp/")
+    else:
+        form = PostForm()
+        context = {
+            'form': form
+        }
+
+    return render(request, 'SucculentApp/postCreate.html', context)
