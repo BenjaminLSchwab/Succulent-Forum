@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from SucculentApp.forms import SignUpForm
 from django.contrib.auth.forms import UserCreationForm
 from SucculentApp.models import Profile
-from SucculentApp.models import Thread, Topic
+from SucculentApp.models import Thread, Topic, Post, Poll
 #from django.contrib.auth.forms import UserCreationForm
 from SucculentApp.forms import UserCreationForm, ThreadForm, PostForm
 import datetime
@@ -84,7 +84,16 @@ def newThread(request, topic_id):
 
 def newPost(request):
     if request.method == 'POST':
-       return render(request, 'SucculentApp/postCreate.html')
+        form = PostForm(request.POST)
+        if form.is_valid():
+            if form.cleaned_data['HasPoll']:
+                NewPoll = Poll()
+
+
+            NewPost = Post()
+            NewPost.Body = form.cleaned_data['Body']
+            
+            return render(request, 'SucculentApp/postCreate.html')
     else:
         form = PostForm()
         context = {

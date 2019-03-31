@@ -20,7 +20,13 @@ class ThreadForm(forms.Form):
 
 class PostForm(forms.Form):
     Body = forms.CharField(max_length=10000, required=True)
-    HasPoll = forms.BooleanField()
+    HasPoll = forms.BooleanField(required=False)
+    PollQuestion = forms.CharField( max_length=100, required=False)
+    Choice1 = forms.CharField(max_length=100, required=False)
+    Choice2 = forms.CharField(max_length=100, required=False)
+    Choice3 = forms.CharField(max_length=100, required=False)
+    Choice4 = forms.CharField(max_length=100, required=False)
+    
     
 
     
