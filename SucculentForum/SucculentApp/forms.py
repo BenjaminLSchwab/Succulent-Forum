@@ -22,6 +22,14 @@ class PostForm(forms.Form):
     Body = forms.CharField(max_length=10000, required=True)
     HasPoll = forms.BooleanField(required=False)
 
+class PollForm(forms.Form):
+    Title = forms.CharField(max_length=100, required=True)
+    StartDate = forms.DateField(required=False) # set start date to now if not specified
+    EndDate = forms.DateField(required=False) # if there is an end date, do not show results until end. If there is no end date, show results always
+
+class ChoiceForm(forms.Form):
+    Title = forms.CharField(max_length=100, required=True)
+
     
     
 
