@@ -9,7 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 from SucculentApp.models import Profile
 from SucculentApp.models import Thread, Topic, Post, Poll
 #from django.contrib.auth.forms import UserCreationForm
-from SucculentApp.forms import UserCreationForm, ThreadForm, PostForm
+from SucculentApp.forms import UserCreationForm, ThreadForm, PostForm, PollForm, ChoiceForm
 import datetime
 
 # Create your views here.
@@ -100,3 +100,23 @@ def newPost(request, thread_id):
         }
 
     return render(request, 'SucculentApp/postCreate.html', context)
+
+def newPoll(request, post_id):
+    if request.method == 'POST':
+        form = PollForm(request.POST)
+        if form.is_valid():
+
+            NewPoll = Poll()
+            NewPoll.Title = form.cleaned_data['Title']
+            if (form.cleaned_data['StartDate'] != null):
+                NewPoll.StartDate = datetime.date
+            else:
+                NewPoll.StartDate = form.cleaned_data['StartDate']
+    else:
+        form = PollForm()
+        context = {
+            'form': form
+        }
+        
+
+        

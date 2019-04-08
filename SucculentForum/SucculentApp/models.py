@@ -28,7 +28,7 @@ class Thread(models.Model):
 class Poll(models.Model):
     Title = models.CharField(max_length=50)
     StartDate = models.DateField()
-    EndDate = models.DateField()
+    EndDate = models.DateField(null=True)
 
 class Post(models.Model):
     ThreadId = models.ForeignKey(Thread, on_delete=models.CASCADE)
