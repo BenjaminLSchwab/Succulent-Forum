@@ -7,4 +7,5 @@ urlpatterns = [
     path('<int:topic_id>/Topic/NewThread/', views.newThread, name='newThread'),
     # path('Thread/NewPost/', views.newPost, name='newPost')
     path('<int:thread_id>/Thread/NewPost/', views.newPost, name='newPost')
+    path('<int:post_id>/Post/NewPoll/', views.newPoll, name='newPost')
 ]

@@ -108,15 +108,20 @@ def newPoll(request, post_id):
 
             NewPoll = Poll()
             NewPoll.Title = form.cleaned_data['Title']
-            if (form.cleaned_data['StartDate'] != null):
+            if (form.cleaned_data['StartDate'] == null):
                 NewPoll.StartDate = datetime.date
             else:
                 NewPoll.StartDate = form.cleaned_data['StartDate']
+            if (form.cleaned_data['EndDate'] != null):
+                NewPoll.EndDate = form.cleaned_data['EndDate']
+            NewPoll.Save()
+            return redirect("/SucculentApp/" + NewPoll.pk + "/Poll/newChoice")
     else:
         form = PollForm()
         context = {
             'form': form
         }
-        
+    return render(request, 'SucculentApp/pollCreate.html', context)
+
 
         
