@@ -114,7 +114,7 @@ def newPoll(request, post_id):
                 NewPoll.StartDate = form.cleaned_data['StartDate']
             if (form.cleaned_data['EndDate'] != null):
                 NewPoll.EndDate = form.cleaned_data['EndDate']
-            NewPoll.Save()
+            NewPoll.save()
             return redirect("/SucculentApp/" + NewPoll.pk + "/Poll/newChoice")
     else:
         form = PollForm()

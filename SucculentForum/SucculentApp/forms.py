@@ -20,7 +20,6 @@ class ThreadForm(forms.Form):
 
 class PostForm(forms.Form):
     Body = forms.CharField(max_length=10000, required=True)
-    HasPoll = forms.BooleanField(required=False)
 
 class PollForm(forms.Form):
     Title = forms.CharField(max_length=100, required=True)

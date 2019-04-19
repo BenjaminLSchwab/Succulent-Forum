@@ -7,7 +7,17 @@
         {% csrf_token %}
         <p class="errorText">{{errorText}}</p>
         {{form.as_p}}
-
+        <button type="button">Add Poll</button>
+        <button type="button">Remove Poll</button>
+        <div id="PollContainer">
+            <p>Poll Question</p>
+            <input type="text" id="question">
+            <p>Answer 1</p>
+            <input type="text" id="answer1">
+            <p>Answer 2</p>
+            <input type="text" id="answer2">
+            <button type="button">Add Answer</button>
+        </div>
         <button type="submit" class="btn btn-primary">Create</button>
     </form>
 </div>
